@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, Text, FlatList, StatusBar, StyleSheet } from 'react-native';
+import { SafeAreaView, Text, FlatList, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
 
 import api from '../src/services/api';
 
@@ -23,7 +23,18 @@ export default function App() {
            renderItem={({ item: repository}) => (
            <Text style={styles.repository}>{repository.title}</Text>
            )}     
-        /> 
+        />
+
+        <TouchableOpacity>
+            <Text style={styles.button}>Adicionar Projeto</Text>
+        
+        
+        
+        
+        
+        </TouchableOpacity> 
+
+
      </SafeAreaView>    
      </>
     );
