@@ -12,6 +12,19 @@ export default function App() {
         });
     }, []);
 
+    async function handleAddRepository() {
+        const response = await api.post('repositories', {
+            title: `novo projeto ${Date.now()}`,
+            owner: 'juka'
+        });
+
+        const repository = response.data;
+        setRepositories([ ...repositories, repository]);
+
+    }
+
+
+
     return(
     <>
      <StatusBar barStyle="light-content"/>
@@ -25,13 +38,12 @@ export default function App() {
            )}     
         />
 
-        <TouchableOpacity>
-            <Text style={styles.button}>Adicionar Projeto</Text>
-        
-        
-        
-        
-        
+        <TouchableOpacity 
+           activeOpacity={0.8} 
+           style={styles.button}
+           onPress={handleAddRepository}
+        >
+         <Text style={styles.buttonText}>Adicionar Projeto</Text>
         </TouchableOpacity> 
 
 
@@ -52,6 +64,19 @@ const styles = StyleSheet.create({
         
 
     },
+    button: {
+        backgroundColor: '#FFF',
+        margin:20,
+        height:50,
+        borderRadius: 4,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    buttonText: {
+        fontWeight:'bold',
+        fontSize: 16,
+    }
 
     
 });
